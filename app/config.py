@@ -1,8 +1,11 @@
+from instance.config import NEWS_API_KEY
+
+
 class Config:
     '''
     General configuration parent class
     '''
-    pass
+    NEWS_API_KEY='https://newsapi.org/v2/everything?q=apple&from=2021-09-08&to=2021-09-08&sortBy=popularity&apiKey=6e5882a38e5f40e9bad1a2742e5d9c9e'
 
 
 
