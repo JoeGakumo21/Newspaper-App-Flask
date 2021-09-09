@@ -1,15 +1,17 @@
 
 from flask import render_template
 from app import app
-
+from .request import get_news
 #ViewDisplay
 @app.route('/')
 def index():
     '''
     ViewDisplay root page function that retruns the index page and its data
     '''
+    bussiness_news=get_news('bussiness')
+    print(bussiness_news)
     title="Welcome to Newspaper Application Streaming"
-    return render_template('index.html',title=title)
+    return render_template('index.html',title=title,bussiness=bussiness_news)
 
 @app.route('/bussiness')  
 def bussiness():
