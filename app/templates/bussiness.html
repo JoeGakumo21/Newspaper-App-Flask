@@ -39,6 +39,21 @@
     </nav>
     <div class="container">
       <h2>Bussiness News</h2>
+
+      <body>
+        <h3> News Bulletting  Available</h3>
+        <div>
+           {% for bussiness_news in allArticles %}
+               <!-- <h2>{{ bussiness_news.author}}</h2>
+               <h2>{{bussiness_news.title}}</h2>
+               <h2>{{ bussiness_news.description}}</h2>
+               <h2>{{ bussiness_news.url}}</li> -->
+               <img src="{{ bussiness_news.urlToImage}}">
+               <!-- <li>{{ bussiness_news.publisherAt}}</li>
+               <li>{{ bussiness_news.content}}</li> -->
+               {% endfor %}
+        </div>
+ </body>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 

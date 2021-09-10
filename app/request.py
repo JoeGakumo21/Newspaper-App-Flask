@@ -1,3 +1,4 @@
+
 from app.models.news_test import News
 from app import app
 import urllib.request,json
@@ -22,7 +23,7 @@ def get_news():
         get_news_data = url.read()
         get_news_response = json.loads(get_news_data)
 
-        news_results = None
+        news_sources = None
 
         if get_news_response['sources']:
             news_sources_list = get_news_response['sources']
@@ -48,9 +49,54 @@ def process_results(news_list):
         description = news_item.get('description')
         url = news_item.get('url')
         category=news_item.get('category')
+        language=news_item.get('language')
         country=news_item.get('country')
         if description:
-            news_object = News(id,name,description,url,category,country)
+            news_object = News(id,name,description,url,category,country,language)
             news_sources.append(news_object)
 
     return news_sources    
+
+def get_news_allarticles(sources):
+    '''
+    function to retrieve data from database of newsapi
+    '''  
+
+    get_news_articles_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey=6e5882a38e5f40e9bad1a2742e5d9c9e'.format(sources)
+
+    with urllib.request.urlopen(get_news_articles_url) as url:
+        get_news_data = url.read()
+        get_news_response = json.loads(get_news_data)
+
+        news_sources_articles = None
+
+        if get_news_response['articles']:
+            news_sources_list = get_news_response['articles']
+            news_sources_articles = process_results(news_sources_list)
+
+
+    return news_sources_articles
+
+def process_articles(news_list):
+    '''
+    Function  that processes the news result and transform them to a list of Objects
+
+    Args:
+        news_list: A list of dictionaries that contain news details
+
+    Returns :
+        news_results: A list of news objects
+    '''
+    news_sources_articles = []
+    for news_item in news_list:
+        author = news_item.get('author')
+        title = news_item.get('title')
+        description = news_item.get('description')
+        url = news_item.get('url')
+        urlToImage=news_item.get('urlToImage')
+        content=news_item.get('content')
+        if description:
+            news_object = News(author,title,description,url,urlToImage,content)
+            news_sources_articles.append(news_object)
+
+    return news_sources_articles   
