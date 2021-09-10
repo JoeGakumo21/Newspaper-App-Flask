@@ -45,12 +45,13 @@
            {% for bussiness_news in allArticles %}
                <h2>{{ bussiness_news.author}}</h2>
                <h2>{{bussiness_news.title}}</h2>
+               <a href="{{ bussiness_news.url}}">
                <p>{{ bussiness_news.description}}</p>
-               <a>{{ bussiness_news.url}}</a>
-               <img [src]='{{ bussiness_news.urlToImage }}'>
+              </a>
+               <img src='{{ bussiness_news.urlToImage }}'>
                <p>{{ bussiness_news.publisherAt}}</p>
                <p>{{ bussiness_news.content}}</p> 
-               {% endfor %}
+            {% endfor %}
         </div>
  </body>
     </div>
