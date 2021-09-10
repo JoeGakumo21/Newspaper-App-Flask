@@ -8,7 +8,7 @@ def index():
     '''
     ViewDisplay root page function that retruns the index page and its data
     '''
-    bussiness_news=get_news('bussiness')
+    bussiness_news=get_news()
     print(bussiness_news)
     title="Welcome to Newspaper Application Streaming"
     return render_template('index.html',title=title,bussiness=bussiness_news)

@@ -9,13 +9,14 @@ News=news.News
 api_key = app.config['NEWS_API_KEY']
 
 #getting the news  base url
-base_url=app.config['NEWS_API_BASE_URL']
+base_url=app.config['NEWS_API_URL_ALL']
+base_url_article=app.config['NEWS_ARTICLE_ALL']
 
-def get_news(category):
+def get_news():
     '''
     Function that gets the json response to our url request
     '''
-    get_news_url = base_url.format(category,api_key)
+    get_news_url = 'https://newsapi.org/v2/top-headlines/sources?apiKey=6e5882a38e5f40e9bad1a2742e5d9c9e'
 
     with urllib.request.urlopen(get_news_url) as url:
         get_news_data = url.read()
@@ -23,12 +24,12 @@ def get_news(category):
 
         news_results = None
 
-        if get_news_response['results']:
-            news_results_list = get_news_response['results']
-            news_results = process_results(news_results_list)
+        if get_news_response['sources']:
+            news_sources_list = get_news_response['sources']
+            news_sources = process_results(news_sources_list)
 
 
-    return news_results
+    return news_sources
 
 def process_results(news_list):
     '''
@@ -40,18 +41,16 @@ def process_results(news_list):
     Returns :
         news_results: A list of news objects
     '''
-    news_results = []
+    news_sources = []
     for news_item in news_list:
         id = news_item.get('id')
-        author = news_item.get('author')
-        title = news_item.get('title')
+        name = news_item.get('name')
         description = news_item.get('description')
         url = news_item.get('url')
-        url_image = news_item.get('url_image')
-        publisherAt=news_item.get('publisherAt')
-        content=news_item.get('content')
+        category=news_item.get('category')
+        country=news_item.get('country')
         if description:
-            news_object = news(id,author,title,description,url,url_image,publisherAt,content)
-            news_results.append(news_object)
+            news_object = News(id,name,description,url,category,country)
+            news_sources.append(news_object)
 
-    return news_results    
+    return news_sources    
