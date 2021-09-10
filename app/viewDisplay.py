@@ -21,8 +21,8 @@ def bussiness(id):
     '''  
     allArticles_news=get_news_allarticles(id)
     print(allArticles_news)
-    title="Kuo: Apple Watch Series 7 is a ‘dramatic change in design’, will be released this month despite initial production issues - 9to5Mac"
-    return render_template('bussiness.html',title=title, allArticles=allArticles_news)
+    # title="Kuo: Apple Watch Series 7 is a ‘dramatic change in design’, will be released this month despite initial production issues - 9to5Mac"
+    return render_template('bussiness.html', allArticles=allArticles_news)
 
 @app.route('/technology')
 def technology():
