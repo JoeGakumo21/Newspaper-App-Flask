@@ -38,19 +38,18 @@
       </div>
     </nav>
     <div class="container">
-      <h2>Bussiness News</h2>
 
       <body>
         <h3> News Bulletting  Available</h3>
         <div>
            {% for bussiness_news in allArticles %}
-               <!-- <h2>{{ bussiness_news.author}}</h2>
+               <h2>{{ bussiness_news.author}}</h2>
                <h2>{{bussiness_news.title}}</h2>
-               <h2>{{ bussiness_news.description}}</h2>
-               <h2>{{ bussiness_news.url}}</li> -->
-               <img src="{{ bussiness_news.urlToImage}}">
-               <!-- <li>{{ bussiness_news.publisherAt}}</li>
-               <li>{{ bussiness_news.content}}</li> -->
+               <p>{{ bussiness_news.description}}</p>
+               <a>{{ bussiness_news.url}}</a>
+               <img [src]='{{ bussiness_news.urlToImage }}'>
+               <p>{{ bussiness_news.publisherAt}}</p>
+               <p>{{ bussiness_news.content}}</p> 
                {% endfor %}
         </div>
  </body>
