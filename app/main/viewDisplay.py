@@ -1,10 +1,10 @@
 
 # from app.models.news import AllArticles
 from flask import render_template,request,redirect,url_for
-from app import app
-from .request import get_news,get_news_allarticles,search_news
+from .import main
+from ..request import get_news,get_news_allarticles,search_news
 #ViewDisplay
-@app.route('/')
+@main.route('/')
 def index():
     '''
     ViewDisplay root page function that retruns the index page and its data
@@ -22,7 +22,7 @@ def index():
     # =======
     # return render_template('index.html',title=title,bussiness=bussiness_news)
 
-@app.route('/bussiness/<id>')  
+@main.route('/bussiness/<id>')  
 def bussiness(id):
     '''
      ViewDisplay root page function that retruns the bussiness page and its data
@@ -33,7 +33,7 @@ def bussiness(id):
     return render_template('bussiness.html', Allarticles=Allarticles_news)
 
 # ============search goes here==============
-@app.route('/search/<news_name>')
+@main.route('/search/<news_name>')
 def search(news_name):
     '''
     View function to display the search results
