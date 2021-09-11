@@ -1,3 +1,4 @@
+
 <div class="navbar navbar-inverse" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -8,11 +9,18 @@
               <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="/">Top News Headlines </a>
+          
         </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="/">Home</a></li>
-        </div>
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                {% for bussiness_news in bussiness %}
+                    <h2><a href="/bussiness/{{bussiness_news.id}}">{{ bussiness_news.id }}</a></h2>
+                 {% endfor %}
+            </ul>
+          </div>
 
     </div>
+    
 </div>
