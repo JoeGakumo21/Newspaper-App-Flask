@@ -13,9 +13,9 @@ def index():
     print(bussiness_news)
     title="Welcome to Newspaper Application Streaming"
     # =====search goes here====
-    search_movie = request.args.get('news_query')
-    if search_movie:
-        return redirect(url_for('search',news_name=search_movie))
+    search_news = request.args.get('news_query')
+    if search_news:
+        return redirect(url_for('.search',news_name=search_news))
     else:
         return render_template('index.html', title = title, bussiness=bussiness_news )
 
@@ -42,5 +42,5 @@ def search(news_name):
     news_name_format = "+".join(news_name_list)
     searched_news = search_news(news_name_format)
     title = f'search results for {news_name}'
-    return render_template('search.html',news = searched_news)
+    return render_template('search.html',news = searched_news,title=title)
 

@@ -5,13 +5,13 @@
     <div class="container">
 
         <div class="row">
-
+            <p>{{title}}</p>
             <h3> Found {{ news| count }} matches </h3>
             <hr>
             <ul>
-                {{ macro.displayNewsList(news)}}
+                {{ macro.displayList(news)}}
             </ul>
-
+           
         </div>
 
     </div>
