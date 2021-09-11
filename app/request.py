@@ -56,7 +56,7 @@ def process_results(news_list):
             news_sources.append(news_object)
 
     return news_sources    
-
+# ============================article===========
 def get_news_allarticles(articles):
     '''
     function to retrieve data from database of newsapi
@@ -94,9 +94,10 @@ def process_articles(news_list):
         description = news_item.get('description')
         url = news_item.get('url')
         urlToImage=news_item.get('urlToImage')
+        publisherAt=news_item.get('publisherAt')
         content=news_item.get('content')
         if description:
-            news_object = AllArticles(author,title,description,url,urlToImage,content)
+            news_object = AllArticles(author,title,description,url,urlToImage,publisherAt,content)
             news_sources_articles.append(news_object)
 
     return news_sources_articles   
