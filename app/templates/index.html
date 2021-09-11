@@ -12,6 +12,15 @@
 <!-- main block goes here -->
 {% block content%}
   <h3> All News Available</h3>
+  <!-- =====serach goes here -->
+  <div class="container">
+    <form>
+        <input type="text" name="news_query" placeholder="Search for Top Headings News Accross the Wolrd" class="form-control">
+        <input type="submit"  value="Submit" class="btn btn-default">
+    </form>
+
+  </div>
+  <!-- end of search -->
   <ul>
    
       {% for bussiness_news in bussiness %}
