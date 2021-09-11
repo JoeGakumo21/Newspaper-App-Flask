@@ -4,7 +4,7 @@
   {% if title %}
   <title> {{ title }}</title>
   {% else %}
-  <title> Welcome to the best Movie Review website </title>
+  <title> Welcome to the News Updates website </title>
   {% endif %}
 
 {% extends 'base.html'%}
@@ -15,7 +15,7 @@
   <!-- =====serach goes here -->
   <div class="container">
     <form>
-        <input type="text" name="news_query" placeholder="Search for Top Headings News Accross the Wolrd" class="form-control">
+        <input type="text" name="news_query" placeholder="Search for Top Headings News Accross the World" class="form-control">
         <input type="submit"  value="Submit" class="btn btn-default">
     </form>
 
@@ -25,17 +25,6 @@
     {% for everything in everything %}
       <div class="jumbotron bg-primary text-danger">
         <li><img src="{{everything.urlToImage}}" alt="Image"></li>
-      </div>      
-      {% endfor %}
-   
-      {% for bussiness_news in bussiness %}
-      <div class="jumbotron bg-primary text-danger">
-        <h2><a href="/bussiness/{{bussiness_news.id}}">{{ bussiness_news.id }}</a></h2>
-        <p>{{bussiness_news.description | truncate(200)}}</p>
-        <p>Language: {{bussiness_news.language}}</p>
-        <p>Country: {{bussiness_news.country}}</p>
-        <p>{{bussiness_news.url}}</p>
-        <p><a href="/bussiness/{{bussiness_news.id}}">Click to View {{ bussiness_news.id }}</a></p>
       </div>      
       {% endfor %}
    
