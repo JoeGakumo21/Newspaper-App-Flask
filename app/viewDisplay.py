@@ -27,10 +27,10 @@ def bussiness(id):
     '''
      ViewDisplay root page function that retruns the bussiness page and its data
     '''  
-    allArticles_news=get_news_allarticles(id)
-    print(allArticles_news)
+    Allarticles_news=get_news_allarticles(id)
+    print(Allarticles_news)
     # title="Kuo: Apple Watch Series 7 is a ‘dramatic change in design’, will be released this month despite initial production issues - 9to5Mac"
-    return render_template('bussiness.html', allArticles=allArticles_news)
+    return render_template('bussiness.html', Allarticles=Allarticles_news)
 
 # ============search goes here==============
 @app.route('/search/<news_name>')

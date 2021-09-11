@@ -5,17 +5,19 @@
 
 {%block content%}
 <div class="container">
-    {%for allArticles_news in allArticles%}
-        <p>{{ allArticles_news.author}}</p>
-        <p>{{ allArticles_news.title}}</p>
-        <a href="{{allArticles_news.url}}">
-        <p>{{ allArticles_news.description}}</p>
+    {%for Allarticles_news in Allarticles%}
+        <p>{{ Allarticles_news.author}}</p>
+        <p>{{ Allarticles_news.title}}</p>
+        <a href="{{Allarticles_news.url}}">
+        <p>{{ Allarticles_news.description}}</p>
         </a>
         <div class="jumbotron">
-        <img class="img-responsive" src="{{allArticles_news.urlToImage}}" alt="Picture image">
+        <img class="img-responsive" src="{{Allarticles_news.urlToImage}}" alt="Picture image">
         </div>
-        <p>{{ allArticles_news.publishedAt}}</p>
-        <p>{{allArticles_news.content}}</p>
+        <p>{{ Allarticles_news.publishedAt}}</p>
+        <p>{{Allarticles_news.content}}</p>
     {%endfor%}
 </div>
 {%endblock%}
+
+

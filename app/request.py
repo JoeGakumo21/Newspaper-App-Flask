@@ -4,7 +4,7 @@ from .models import news
 
 
 News=news.News
-AllArticles=news.AllArticles
+Allarticles=news.Allarticles
 #Getting api key
 api_key = app.config['NEWS_API_KEY']
 
@@ -97,7 +97,7 @@ def process_articles(news_list):
         publisherAt=news_item.get('publisherAt')
         content=news_item.get('content')
         if description:
-            news_object = AllArticles(author,title,description,url,urlToImage,publisherAt,content)
+            news_object = Allarticles(author,title,description,url,urlToImage,publisherAt,content)
             news_sources_articles.append(news_object)
 
     return news_sources_articles   

@@ -18,7 +18,7 @@ class News:
         self.country=country
         
 
-class AllArticles:
+class Allarticles:
     '''
     method to get all the articles
     '''        

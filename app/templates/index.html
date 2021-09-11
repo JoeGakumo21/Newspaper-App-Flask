@@ -25,14 +25,13 @@
    
       {% for bussiness_news in bussiness %}
       <div class="jumbotron bg-primary text-danger">
-        <h2><a href="/bussiness/{{bussiness_news.name}}">{{ bussiness_news.id }}</a></h2>
+        <h2><a href="/bussiness/{{bussiness_news.id}}">{{ bussiness_news.id }}</a></h2>
         <p>{{bussiness_news.description | truncate(200)}}</p>
         <p>Language: {{bussiness_news.language}}</p>
         <p>Country: {{bussiness_news.country}}</p>
         <p>{{bussiness_news.url}}</p>
         <p><a href="/bussiness/{{bussiness_news.id}}">Click to View {{ bussiness_news.id }}</a></p>
-      </div>
-      
+      </div>      
       {% endfor %}
    
   </ul>
