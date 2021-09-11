@@ -1,4 +1,4 @@
-from os import name
+# from os import name
 from urllib.request import urlopen
 
 
@@ -16,7 +16,7 @@ class News:
         self.category = category
         self.country=country
 
-class allArticles:
+class AllArticles:
     '''
     method to get all the articles
     '''        

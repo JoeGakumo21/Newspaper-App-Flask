@@ -1,11 +1,10 @@
-
-from app.models.news_test import News
 from app import app
 import urllib.request,json
 from .models import news
 
 
 News=news.News
+AllArticles=news.AllArticles
 #Getting api key
 api_key = app.config['NEWS_API_KEY']
 
@@ -96,7 +95,7 @@ def process_articles(news_list):
         urlToImage=news_item.get('urlToImage')
         content=news_item.get('content')
         if description:
-            news_object = News(author,title,description,url,urlToImage,content)
+            news_object = AllArticles(author,title,description,url,urlToImage,content)
             news_sources_articles.append(news_object)
 
     return news_sources_articles   
