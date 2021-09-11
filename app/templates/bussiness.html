@@ -1,22 +1,21 @@
+
+ 
 {% extends 'base.html'%}
 
-  
-    <!-- content block -->
-    {% block content %}
-          <h3> News Bulletting  Available</h3>
-        <div>
-           {% for bussiness_news in allArticles %}
-               <h2>{{ bussiness_news.author}}</h2>
-               <h2>{{bussiness_news.title}}</h2>
-               <a href="{{ bussiness_news.url}}">
-               <p>{{ bussiness_news.description}}</p>
-              </a>
-               <img src='{{ bussiness_news.urlToImage }}'>
-               <p>{{ bussiness_news.publisherAt}}</p>
-               <p>{{ bussiness_news.content}}</p> 
-            {% endfor %}
+
+{%block content%}
+<div class="container">
+    {%for bussiness_news in allArticles%}
+        <p>{{ bussiness_news.author}}</p>
+        <p>{{ bussiness_news.title}}</p>
+        <a href="{{bussiness_news.url}}">
+        <p>{{ bussiness_news.description}}</p>
+        </a>
+        <div class="jumbotron">
+        <img class="img-responsive" src="{{bussiness_news.urlToImage}}" alt="Picture image">
         </div>
-      
-       { % endblock % } 
- 
- 
+        <p>{{ bussiness_news.publishedAt}}</p>
+        <p>{{bussiness_news.content}}</p>
+    {%endfor%}
+</div>
+{%endblock%}

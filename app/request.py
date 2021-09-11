@@ -56,12 +56,12 @@ def process_results(news_list):
 
     return news_sources    
 
-def get_news_allarticles(sources):
+def get_news_allarticles(articles):
     '''
     function to retrieve data from database of newsapi
     '''  
 
-    get_news_articles_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey=6e5882a38e5f40e9bad1a2742e5d9c9e'.format(sources)
+    get_news_articles_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey=6e5882a38e5f40e9bad1a2742e5d9c9e'.format(articles)
 
     with urllib.request.urlopen(get_news_articles_url) as url:
         get_news_data = url.read()
