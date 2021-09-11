@@ -17,7 +17,7 @@ def get_news():
     Function that gets the json response to our url request
     '''
     get_news_url = 'https://newsapi.org/v2/top-headlines/sources?apiKey=6e5882a38e5f40e9bad1a2742e5d9c9e'
-
+    # get_news_url= 'https://newsapi.org/v2/top-headlines?country=us&apiKey=6e5882a38e5f40e9bad1a2742e5d9c9e'
     with urllib.request.urlopen(get_news_url) as url:
         get_news_data = url.read()
         get_news_response = json.loads(get_news_data)
@@ -26,6 +26,7 @@ def get_news():
 
         if get_news_response['sources']:
             news_sources_list = get_news_response['sources']
+            # changed source to article
             news_sources = process_results(news_sources_list)
 
 
@@ -99,3 +100,23 @@ def process_articles(news_list):
             news_sources_articles.append(news_object)
 
     return news_sources_articles   
+
+
+# serach here========================
+def search_movie(sources):
+    # search_movie_url = 'https://api.themoviedb.org/3/search/movie?api_key={}&query={}'.format(api_key,movie_name)
+    search_news_headlines= 'https://newsapi.org/v2/top-headlines/sources?apiKey=6e5882a38e5f40e9bad1a2742e5d9c9e={}'.format(sources)
+    with urllib.request.urlopen(search_news_headlines) as url:
+        search_news_data = url.read()
+        search_news_response = json.loads(search_news_data)
+
+        search_movie_results = None
+
+        if search_news_response['sources']:
+            search_movie_list = search_news_response['sources']
+            search_movie_results = process_results(search_movie_list)
+
+
+    return search_movie_results
+
+# ===================search ends here
