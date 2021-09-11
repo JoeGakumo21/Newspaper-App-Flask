@@ -29,4 +29,15 @@ class Allarticles:
         self.urlToImage=urlToImage
         self.publisherAt=publisherAt
         self.content=content
-    
+class Everything:
+        ''''
+        class that create all the articles
+        '''
+        def __init__(self,author,title,description,url,urlToImage,publisherAt,content):
+            self.author=author
+            self.title=title
+            self.description=description
+            self.url=url
+            self.urlToImage=urlToImage
+            self.publisherAt=publisherAt
+            self.content=content

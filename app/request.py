@@ -1,6 +1,6 @@
 
 import urllib.request,json
-from app.model import News,Allarticles
+from app.model import News,Allarticles,Everything
 
 
 # News=news.News
@@ -110,7 +110,7 @@ def process_articles(news_list):
 # search here========================
 def search_news(sources):
     # search_movie_url = 'https://api.themoviedb.org/3/search/movie?api_key={}&query={}'.format(api_key,movie_name)
-    search_news_headlines= 'https://newsapi.org/v2/top-headlines?q={}&apiKey=6e5882a38e5f40e9bad1a2742e5d9c9e'.format(sources)
+    search_news_headlines= 'https://newsapi.org/v2/everything?q={}&apiKey=6e5882a38e5f40e9bad1a2742e5d9c9e'.format(sources)
     with urllib.request.urlopen(search_news_headlines) as url:
         search_news_data = url.read()
         search_news_response = json.loads(search_news_data)
@@ -119,9 +119,53 @@ def search_news(sources):
 
         if search_news_response['articles']:
             search_movie_list = search_news_response['articles']
-            search_movie_results = process_results(search_movie_list)
+            search_movie_results = process_everything(search_movie_list)
 
 
     return search_movie_results
 
 # ===================search ends here
+def get_everything():
+    '''
+    function to retrieve data from database of newsapi
+    '''  
+
+    get_news_articles_url = 'https://newsapi.org/v2/everything?q=sports&apiKey=6e5882a38e5f40e9bad1a2742e5d9c9e'
+
+    with urllib.request.urlopen(get_news_articles_url) as url:
+        get_news_data = url.read()
+        get_news_response = json.loads(get_news_data)
+
+        news_sources_everything = None
+
+        if get_news_response['articles']:
+            news_sources_list = get_news_response['articles']
+            news_sources_everything = process_everything(news_sources_list)
+
+
+    return news_sources_everything
+
+def process_everything(news_list):
+    '''
+    Function  that processes the news result and transform them to a list of Objects
+
+    Args:
+        news_list: A list of dictionaries that contain news details
+
+    Returns :
+        news_results: A list of news objects
+    '''
+    news_sources_everything= []
+    for news_item in news_list:
+        author = news_item.get('author')
+        title = news_item.get('title')
+        description = news_item.get('description')
+        url = news_item.get('url')
+        urlToImage=news_item.get('urlToImage')
+        publisherAt=news_item.get('publisherAt')
+        content=news_item.get('content')
+        if description:
+            news_object = Everything(author,title,description,url,urlToImage,publisherAt,content)
+            news_sources_everything.append(news_object)
+
+    return news_sources_everything  

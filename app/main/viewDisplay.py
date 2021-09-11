@@ -1,26 +1,26 @@
 
 # from app.models.news import AllArticles
+# from app.model import Everything
 from flask import render_template,request,redirect,url_for
 from .import main
-from ..request import get_news,get_news_allarticles,search_news
+from ..request import get_news,get_news_allarticles,search_news,get_everything
 #ViewDisplay
 @main.route('/')
 def index():
     '''
     ViewDisplay root page function that retruns the index page and its data
     '''
+    everything=get_everything()
+    print(everything)
     bussiness_news=get_news()
     print(bussiness_news)
     title="Welcome to Newspaper Application Streaming"
     # =====search goes here====
     search_news = request.args.get('news_query')
     if search_news:
-        return redirect(url_for('.search',news_name=search_news))
+        return redirect(url_for('main.search',news_name=search_news))
     else:
-        return render_template('index.html', title = title, bussiness=bussiness_news )
-
-    # =======
-    # return render_template('index.html',title=title,bussiness=bussiness_news)
+        return render_template('index.html', title = title, bussiness=bussiness_news,everything=everything)
 
 @main.route('/bussiness/<id>')  
 def bussiness(id):

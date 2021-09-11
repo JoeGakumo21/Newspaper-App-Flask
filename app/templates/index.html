@@ -22,6 +22,11 @@
   </div>
   <!-- end of search -->
   <ul>
+    {% for everything in everything %}
+      <div class="jumbotron bg-primary text-danger">
+        <li><img src="{{everything.urlToImage}}" alt="Image"></li>
+      </div>      
+      {% endfor %}
    
       {% for bussiness_news in bussiness %}
       <div class="jumbotron bg-primary text-danger">
