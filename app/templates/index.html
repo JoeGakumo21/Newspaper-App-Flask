@@ -9,25 +9,42 @@
 
 {% extends 'base.html'%}
 {% import 'macros.html' as macro%} 
+
+{% block styles%}
+    {{ super() }} 
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
 <!-- main block goes here -->
 {% block content%}
-  <h3> All News Available</h3>
+  
   <!-- =====serach goes here -->
   <div class="container">
+    <h3 style="font-size: 4rem;font: 600;color: brown;"> All News Available</h3>
     <form>
         <input type="text" name="news_query" placeholder="Search for Top Headings News Accross the World" class="form-control">
-        <input type="submit"  value="Submit" class="btn btn-default">
+        <br><br><input type="submit"  value="Submit" class="btn btn-danger" style="font-size: 2rem;">
     </form>
 
   </div>
+  <br><br><br>
   <!-- end of search -->
+  
   <ul>
+    
     {% for everything in everything %}
-      <div class="jumbotron bg-primary text-danger">
-        <li><img src="{{everything.urlToImage}}" alt="Image"></li>
-      </div>      
+    <li class="content col-lg-4 col-md-6 col-md-12" style="border: 2px solid #808080;display: inline-block;margin-bottom: 10px;border-radius: 5px;">
+    
+        <p>{{everything.name}}</p>
+        <h3>{{everything.title}}</h3>
+        <h2>{{everything.author}}</h2>
+        <img src="{{everything.urlToImage}}" alt="Image"  class="card-img-top" style="width: 350px;">
+        <a class="link" href="{{everything.url}}" ><h4 style="margin-top: 5px;text-decoration: none;">{{everything.url}}</h4></a>
+      </li> 
+    
       {% endfor %}
-   
+  
   </ul>
+ 
+ 
 {% endblock%}
   

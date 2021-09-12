@@ -6,16 +6,16 @@
 {%block content%}
 <div class="container">
     {%for Allarticles_news in Allarticles%}
-        <p>{{ Allarticles_news.author}}</p>
-        <p>{{ Allarticles_news.title}}</p>
+        <h3>{{ Allarticles_news.author}}</h3>
+        <h3>{{ Allarticles_news.title}}</h3>
         <a href="{{Allarticles_news.url}}">
-        <p>{{ Allarticles_news.description}}</p>
+        <h3>{{ Allarticles_news.description}}</h3>
         </a>
         <div class="jumbotron">
         <img class="img-responsive" src="{{Allarticles_news.urlToImage}}" alt="Picture image">
         </div>
-        <p>{{ Allarticles_news.publishedAt}}</p>
-        <p>{{Allarticles_news.content}}</p>
+        <h3>{{ Allarticles_news.publishedAt}}</h3>
+        <h3>{{Allarticles_news.content}}</h3>
     {%endfor%}
 </div>
 {%endblock%}
