@@ -30,7 +30,7 @@ A web application where users can view the latest news from different sources. I
 * Flask
 * News Api
  # live link
-Access this site via <a href=" ">News Website</a>
+Access this site via <a href="">News Website</a>
 # Licence and MIT
 <a href="https://choosealicense.com/licenses/mit/#">
 MIT License
